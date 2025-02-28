@@ -1,28 +1,17 @@
-import React from 'react';
-  
-  const RegisterUser = () =>  {
-	return (
-	  <div>
-	  </div>
-	);
+import axios from 'axios';
+
+const API_BASE_URL = 'https://your-api.com/api/v1'; // Update with actual API
+
+export const registerUser = async (fullname, email, password) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/register`, {
+      fullname,
+      email,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Registration error:', error);
+    throw error;
   }
-  
-  export default RegisterUser;
-  const handleSubmit = async () => {
-    isLoading.value = true;
-    try {
-      const response = await registerUser(
-        form.value.fullname,
-        form.value.email,
-        form.value.password
-      );
-      console.log('Registration successful:', response);
-      localStorage.setItem('token', response.token);
-      router.push('/MyBucket');
-    } catch (error) {
-      console.error('Registration failed:', error);
-      alert('Registration failed. Please check your details and try again.');
-    } finally {
-      isLoading.value = false;
-    }
-  };
+};
