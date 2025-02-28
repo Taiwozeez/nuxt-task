@@ -1,12 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { registerUser } from '@/src/services/register'; // Correct import
+import { registerUser } from '@/src/services/registerUser'; // ✅ Corrected import
 
 const form = ref({
-    fullname: 'Samuel',
-    email: 'daspecialman@gmail.com',
-    password: 'password',
+  fullname: 'Samuel',
+  email: 'daspecialman@gmail.com',
+  password: 'password',
 });
 
 const isLoading = ref(false);
